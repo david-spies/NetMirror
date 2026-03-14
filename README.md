@@ -1,3 +1,5 @@
+![NetMirror](images/NetMirror_Packet_Triage.png)
+
 # NetMirror — Lightweight Packet Triage
 ### Real-Time Network Traffic Analysis & Anomaly Detection
 
