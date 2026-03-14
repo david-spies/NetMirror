@@ -1,0 +1,40 @@
+# NetMirror — Python Requirements
+# Install with:  pip install -r requirements.txt
+#
+# System prerequisite (not pip-installable):
+#   sudo apt install tcpdump          # Debian / Ubuntu
+#   sudo yum install tcpdump          # RHEL / CentOS / Fedora
+#   brew install tcpdump              # macOS (Homebrew)
+#
+# Privilege prerequisite for Live Mode (choose one):
+#   Option A — run with sudo:
+#     sudo /path/to/venv/bin/python3 app.py
+#
+#   Option B — grant raw socket capability to venv Python (no sudo needed):
+#     sudo setcap cap_net_raw,cap_net_admin+eip /path/to/venv/bin/python3
+#     python3 app.py
+# ──────────────────────────────────────────────────────────────────────────────
+
+# Web framework
+flask>=3.0.0,<4.0.0
+
+# WebSocket support (real-time packet push to browser)
+flask-socketio>=5.3.0,<6.0.0
+
+# Async concurrency driver required by Flask-SocketIO
+# eventlet monkey-patches stdlib I/O to be cooperative,
+# enabling concurrent WebSocket + HTTP handling in one process.
+eventlet>=0.35.0,<1.0.0
+
+# ──────────────────────────────────────────────────────────────────────────────
+# All other dependencies are Python stdlib (no additional pip installs needed):
+#
+#   os, sys, json, time, threading, subprocess  — core runtime
+#   re                                          — tcpdump output parsing
+#   random, string                              — session ID generation / demo mode
+#   datetime, timedelta                         — timestamps
+#   collections (defaultdict, deque)            — ring buffers, rate tracking
+#   pathlib (Path)                              — file path handling
+#   ipaddress                                   — RFC-1918 private IP detection
+#   socket                                      — IP address validation (inet_aton)
+# ──────────────────────────────────────────────────────────────────────────────
